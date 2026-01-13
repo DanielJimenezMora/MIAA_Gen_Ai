@@ -1,46 +1,238 @@
-# Astro Starter Kit: Basics
+# 🌍 Travel Planner AI
 
-```sh
-pnpm create astro@latest -- --template basics
+Aplicación de planificación de viajes inteligente que utiliza IA generativa (LLMs), RAG (Retrieval-Augmented Generation) y herramientas externas para crear itinerarios personalizados.
+
+## 🎯 Características
+
+- **Prompt Engineering**: Sistema de prompts optimizado para generar itinerarios detallados
+- **RAG (Retrieval-Augmented Generation)**: Base de conocimiento de destinos turísticos integrada
+- **LLMs**: Integración con OpenAI (GPT-4) y Anthropic (Claude)
+- **Tool Use**: Capacidad para integrar APIs en tiempo real (clima, vuelos, eventos)
+- **React + Astro**: Interfaz moderna y ultra-rápida
+- **TypeScript**: Código tipado y robusto
+- **Tailwind CSS**: Diseño responsive y atractivo
+
+## 🚀 Inicio Rápido
+
+### Prerrequisitos
+
+- Node.js 18+ 
+- pnpm (recomendado) o npm
+- API Key de OpenAI o Anthropic
+
+### Instalación
+
+```bash
+# Instalar dependencias
+pnpm install
+
+# Configurar variables de entorno
+cp .env.example .env
+# Editar .env y agregar tu OPENAI_API_KEY o ANTHROPIC_API_KEY
+
+# Iniciar servidor de desarrollo
+pnpm dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Abre [http://localhost:4321](http://localhost:4321) en tu navegador.
 
-## 🚀 Project Structure
+## 🔑 Configuración de API Keys
 
-Inside of your Astro project, you'll see the following folders and files:
+### Opción 1: Groq (⭐ RECOMENDADO - GRATUITO)
 
-```text
+**Completamente gratis con modelos open source de alta calidad**
+
+1. Crea una cuenta en [Groq Console](https://console.groq.com/)
+2. Ve a [API Keys](https://console.groq.com/keys) y genera una nueva
+3. Agrega a tu archivo `.env`:
+```env
+GROQ_API_KEY=gsk-...
+```
+
+**Ventajas:**
+- ✅ 100% gratuito
+- ✅ Ultra rápido (hardware LPU)
+- ✅ Modelos excelentes (Llama 3.3 70B, Mixtral)
+- ✅ Sin límites de créditos
+
+📖 Ver [GROQ_SETUP.md](GROQ_SETUP.md) para guía detallada
+
+### Opción 2: OpenAI (Requiere créditos)
+
+1. Crea una cuenta en [OpenAI](https://platform.openai.com/)
+2. Genera una API key en la sección de API Keys
+3. Agrega a tu archivo `.env`:
+```env
+OPENAI_API_KEY=sk-proj-...
+```
+
+### Opción 3: Anthropic Claude (Requiere créditos)
+
+1. Crea una cuenta en [Anthropic](https://console.anthropic.com/)
+2. Genera una API key
+3. Agrega a tu archivo `.env`:
+```env
+ANTHROPIC_API_KEY=sk-ant-...
+```
+
+### Opción 4: Modo Demo (Sin API key)
+
+Si no configuras ninguna API key, la aplicación funciona en modo demo usando solo la base de conocimiento local (RAG).
+
+## 📁 Estructura del Proyecto
+
+```
 /
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+├── public/              # Archivos estáticos
+├── src/
+│   ├── components/      # Componentes React
+│   │   └── TravelForm.tsx
+│   ├── data/           # Base de conocimiento (RAG)
+│   │   └── travel-knowledge.ts
+│   ├── layouts/        # Layouts de Astro
+│   │   └── Layout.astro
+│   ├── lib/            # Servicios y utilidades
+│   │   └── ai-service.ts
+│   ├── pages/          # Rutas y API endpoints
+│   │   ├── index.astro
+│   │   └── api/
+│   │       └── generate-itinerary.ts
+│   └── styles/         # Estilos globales
+│       └── global.css
+├── .env.example        # Template de variables de entorno
+├── astro.config.mjs    # Configuración de Astro
+├── package.json
+└── README.md
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## 🎓 Componentes Técnicos (Requisitos de la Tarea)
 
-## 🧞 Commands
+### 1. Prompt Engineering
 
-All commands are run from the root of the project, from a terminal:
+El sistema utiliza prompts estructurados y optimizados en `src/lib/ai-service.ts`:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+- **System Prompt**: Define el rol del asistente y las instrucciones detalladas
+- **User Prompt**: Estructura las preferencias del usuario
+- **Formato específico**: Guía al LLM para generar itinerarios consistentes
 
-## 👀 Want to learn more?
+### 2. RAG (Retrieval-Augmented Generation)
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Base de conocimiento en `src/data/travel-knowledge.ts`:
+
+- 10+ destinos con información detallada
+- Atracciones, gastronomía, cultura, tips
+- Búsqueda contextual antes de generar itinerarios
+- Evita alucinaciones del modelo con datos verificados
+
+### 3. Tool Use
+
+**Implementado**: Sistema preparado para integrar APIs externas
+**Próximas integraciones**:
+- API de clima en tiempo real
+- Precios de vuelos actualizados
+- Eventos y festivales locales
+- Disponibilidad de hoteles
+
+## 🛠️ Comandos Disponibles
+
+| Comando | Acción |
+|---------|--------|
+| `pnpm install` | Instala dependencias |
+| `pnpm dev` | Inicia servidor de desarrollo en `localhost:4321` |
+| `pnpm build` | Construye el sitio para producción en `./dist/` |
+| `pnpm preview` | Vista previa del build local |
+| `pnpm astro check` | Verifica tipos TypeScript |
+
+## 🚀 Deployment en Vercel
+
+### Deployment Automático desde GitHub
+
+1. **Sube tu código a GitHub**
+```bash
+git add .
+git commit -m "Initial commit"
+git push
+```
+
+2. **Conecta con Vercel**
+   - Ve a [vercel.com](https://vercel.com)
+   - Click en "New Project"
+   - Importa tu repositorio de GitHub
+   - Vercel detectará Astro automáticamente
+
+3. **Configura las Variables de Entorno en Vercel**
+   - En el dashboard del proyecto → Settings → Environment Variables
+   - Agrega `OPENAI_API_KEY` o `ANTHROPIC_API_KEY`
+   - Marca las variables para Production, Preview y Development
+
+4. **Deploy**
+   - Vercel hará deploy automáticamente
+   - Cada push a `main` actualizará la aplicación
+
+### Deployment Manual
+
+```bash
+# Build local
+pnpm build
+
+# Deploy a Vercel
+npx vercel --prod
+```
+
+## 📊 Funcionalidad
+
+1. **Formulario de Preferencias**: Usuario ingresa destino, duración, presupuesto, intereses
+2. **Procesamiento**: API route recibe datos y consulta base de conocimiento
+3. **Generación con LLM**: Se envía contexto + preferencias al modelo
+4. **Respuesta**: Itinerario detallado día por día con recomendaciones personalizadas
+
+## 🎥 Video Demostrativo
+
+[Enlace al video en YouTube/Vimeo] - _Próximamente_
+
+En el video se explica:
+- Arquitectura del sistema
+- Implementación de Prompt Engineering
+- Funcionamiento de RAG
+- Demo en vivo de la aplicación
+- Limitaciones y mejoras futuras
+
+## 📝 Reflexión Académica
+
+Ver documento separado: `reflexion-ia-generativa.pdf`
+
+**Temas cubiertos**:
+- Impacto de IA generativa en el sector turístico
+- Análisis crítico de la aplicación desarrollada
+- Ventajas y limitaciones técnicas
+- Referencias bibliográficas (3+)
+
+## 🔮 Roadmap
+
+- [ ] Integrar API de clima en tiempo real
+- [ ] Conectar con APIs de vuelos (Skyscanner/Amadeus)
+- [ ] Implementar vector store para RAG avanzado (Pinecone/Weaviate)
+- [ ] Agregar autenticación de usuarios
+- [ ] Sistema de favoritos y historial
+- [ ] Generación de PDFs descargables
+- [ ] Soporte multiidioma
+- [ ] Chat interactivo para refinar itinerarios
+
+## 🤝 Contribuciones
+
+Proyecto académico para la Maestría en Inteligencia Artificial.
+Desarrollado como parte de la asignatura de IA Generativa.
+
+## 📄 Licencia
+
+MIT License
+
+## 👨‍💻 Autor
+
+**Daniel Jiménez Mora**
+- Maestría en Inteligencia Artificial
+- Contacto: [tu-email@ejemplo.com]
+
+---
+
+**⚡ Hecho con Astro + React + LangChain + ❤️**

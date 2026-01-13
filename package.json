@@ -1,14 +1,39 @@
 {
-  "name": "growing-giant",
+  "name": "travel-planner-ai",
+  "description": "Aplicación de planificación de viajes con IA generativa, RAG y Tool Use",
   "type": "module",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "scripts": {
-    "dev": "astro dev",
+    "dev": "NODE_OPTIONS='--no-deprecation' astro dev",
+    "dev:verbose": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.16.8"
+    "@astrojs/check": "^0.9.6",
+    "@astrojs/node": "^9.5.1",
+    "@astrojs/react": "^4.4.2",
+    "@langchain/anthropic": "^1.3.7",
+    "@langchain/community": "^1.1.3",
+    "@langchain/core": "^1.1.12",
+    "@langchain/groq": "^1.0.2",
+    "@langchain/openai": "^1.2.1",
+    "@tailwindcss/vite": "^4.1.18",
+    "@types/react": "^19.2.8",
+    "@types/react-dom": "^19.2.3",
+    "astro": "^5.16.8",
+    "dotenv": "^17.2.3",
+    "groq-sdk": "^0.37.0",
+    "langchain": "^1.2.7",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "tailwindcss": "^4.1.18",
+    "typescript": "^5.9.3"
+  },
+  "pnpm": {
+    "overrides": {
+      "punycode": "npm:punycode@^2.3.1"
+    }
   }
 }
