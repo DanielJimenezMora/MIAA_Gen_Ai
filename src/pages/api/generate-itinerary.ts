@@ -25,21 +25,40 @@ export const POST: APIRoute = async ({ request }) => {
     
   } catch (error) {
     console.error('Error en API:', error);
+    console.error('Error stack:', (error as Error).stack);
     
     // Error específico según el tipo
     const errorMessage = (error as Error).message;
     let userMessage = 'Error al generar itinerario.';
     
+    // Más detalles para desarrollo
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Error completo para desarrollo:', {
+        message: errorMessage,
+        stack: (error as Error).stack,
+        env: {
+          GROQ_API_KEY: !!process.env.GROQ_API_KEY,
+          ANTHROPIC_API_KEY: !!process.env.ANTHROPIC_API_KEY,
+          OPENAI_API_KEY: !!process.env.OPENAI_API_KEY,
+        }
+      });
+    }
+    
     if (errorMessage.includes('credit balance is too low')) {
       userMessage = 'API sin créditos disponibles. Verifica tu saldo o configura una API key diferente.';
-    } else if (errorMessage.includes('API key')) {
+    } else if (errorMessage.includes('API key') || errorMessage.includes('Invalid API Key')) {
       userMessage = 'API key no válida o no configurada correctamente.';
-    } else if (errorMessage.includes('Ambas APIs fallaron')) {
-      userMessage = 'Ambas APIs (OpenAI y Anthropic) fallaron. Verifica tus credenciales y saldos.';
+    } else if (errorMessage.includes('Ambas APIs fallaron') || errorMessage.includes('Todas las APIs fallaron')) {
+      userMessage = 'Todas las APIs fallaron. Verifica tus credenciales y saldos.';
+    } else if (errorMessage.includes('Se requiere') && errorMessage.includes('API_KEY')) {
+      userMessage = 'No se encontraron API keys válidas configuradas.';
     }
     
     return new Response(
-      JSON.stringify({ error: userMessage }), 
+      JSON.stringify({ 
+        error: userMessage,
+        debug: process.env.NODE_ENV === 'development' ? errorMessage : undefined
+      }), 
       { 
         status: 500,
         headers: { 'Content-Type': 'application/json' }
