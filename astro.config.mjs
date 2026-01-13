@@ -4,11 +4,10 @@ import { defineConfig } from 'astro/config';
 
 import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
-import node from '@astrojs/node';
 
 // https://astro.build/config
 export default defineConfig({
-  // Removemos output y adapter para configuración estática por defecto
+  // Configuración estática por defecto - API routes funcionan automáticamente
   integrations: [react()],
 
   vite: {
