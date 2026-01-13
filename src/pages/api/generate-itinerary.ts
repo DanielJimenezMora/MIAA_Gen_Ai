@@ -1,6 +1,9 @@
 import type { APIRoute } from 'astro';
 import { generateItinerary } from '../../lib/ai-service';
 
+// Configurar para server-side rendering
+export const prerender = false;
+
 export const POST: APIRoute = async ({ request }) => {
   try {
     const body = await request.json();

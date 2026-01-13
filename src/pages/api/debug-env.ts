@@ -1,5 +1,8 @@
 import type { APIRoute } from 'astro';
 
+// Configurar para server-side rendering
+export const prerender = false;
+
 export const GET: APIRoute = async () => {
   try {
     // Solo mostrar si las keys existen (no los valores)
