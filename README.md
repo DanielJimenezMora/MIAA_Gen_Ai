@@ -1,8 +1,8 @@
-# 🌍 Travel Planner AI
+# Travel Planner AI
 
 Aplicación de planificación de viajes inteligente que utiliza IA generativa (LLMs), RAG (Retrieval-Augmented Generation) y herramientas externas para crear itinerarios personalizados.
 
-## 🎯 Características
+## Características
 
 - **Prompt Engineering**: Sistema de prompts optimizado para generar itinerarios detallados
 - **RAG (Retrieval-Augmented Generation)**: Base de conocimiento de destinos turísticos integrada
@@ -12,7 +12,7 @@ Aplicación de planificación de viajes inteligente que utiliza IA generativa (L
 - **TypeScript**: Código tipado y robusto
 - **Tailwind CSS**: Diseño responsive y atractivo
 
-## 🚀 Inicio Rápido
+## Inicio Rápido
 
 ### Prerrequisitos
 
@@ -36,7 +36,7 @@ pnpm dev
 
 Abre [http://localhost:4321](http://localhost:4321) en tu navegador.
 
-## 🔑 Configuración de API Keys
+## Configuración de API Keys
 
 ### Opción 1: Groq (⭐ RECOMENDADO - GRATUITO)
 
@@ -50,10 +50,10 @@ GROQ_API_KEY=gsk-...
 ```
 
 **Ventajas:**
-- ✅ 100% gratuito
-- ✅ Ultra rápido (hardware LPU)
-- ✅ Modelos excelentes (Llama 3.3 70B, Mixtral)
-- ✅ Sin límites de créditos
+- 100% gratuito
+- Ultra rápido (hardware LPU)
+- Modelos excelentes (Llama 3.3 70B, Mixtral)
+- Sin límites de créditos
 
 📖 Ver [GROQ_SETUP.md](GROQ_SETUP.md) para guía detallada
 
@@ -105,7 +105,7 @@ Si no configuras ninguna API key, la aplicación funciona en modo demo usando so
 └── README.md
 ```
 
-## 🎓 Componentes Técnicos (Requisitos de la Tarea)
+## 🎓 Componentes Técnicos
 
 ### 1. Prompt Engineering
 
@@ -143,42 +143,6 @@ Base de conocimiento en `src/data/travel-knowledge.ts`:
 | `pnpm preview` | Vista previa del build local |
 | `pnpm astro check` | Verifica tipos TypeScript |
 
-## 🚀 Deployment en Vercel
-
-### Deployment Automático desde GitHub
-
-1. **Sube tu código a GitHub**
-```bash
-git add .
-git commit -m "Initial commit"
-git push
-```
-
-2. **Conecta con Vercel**
-   - Ve a [vercel.com](https://vercel.com)
-   - Click en "New Project"
-   - Importa tu repositorio de GitHub
-   - Vercel detectará Astro automáticamente
-
-3. **Configura las Variables de Entorno en Vercel**
-   - En el dashboard del proyecto → Settings → Environment Variables
-   - Agrega `OPENAI_API_KEY` o `ANTHROPIC_API_KEY`
-   - Marca las variables para Production, Preview y Development
-
-4. **Deploy**
-   - Vercel hará deploy automáticamente
-   - Cada push a `main` actualizará la aplicación
-
-### Deployment Manual
-
-```bash
-# Build local
-pnpm build
-
-# Deploy a Vercel
-npx vercel --prod
-```
-
 ## 📊 Funcionalidad
 
 1. **Formulario de Preferencias**: Usuario ingresa destino, duración, presupuesto, intereses
@@ -197,16 +161,6 @@ En el video se explica:
 - Demo en vivo de la aplicación
 - Limitaciones y mejoras futuras
 
-## 📝 Reflexión Académica
-
-Ver documento separado: `reflexion-ia-generativa.pdf`
-
-**Temas cubiertos**:
-- Impacto de IA generativa en el sector turístico
-- Análisis crítico de la aplicación desarrollada
-- Ventajas y limitaciones técnicas
-- Referencias bibliográficas (3+)
-
 ## 🔮 Roadmap
 
 - [ ] Integrar API de clima en tiempo real
@@ -218,21 +172,17 @@ Ver documento separado: `reflexion-ia-generativa.pdf`
 - [ ] Soporte multiidioma
 - [ ] Chat interactivo para refinar itinerarios
 
-## 🤝 Contribuciones
+## Contribuciones
 
 Proyecto académico para la Maestría en Inteligencia Artificial.
 Desarrollado como parte de la asignatura de IA Generativa.
 
-## 📄 Licencia
-
-MIT License
 
 ## 👨‍💻 Autor
 
-**Daniel Jiménez Mora**
-- Maestría en Inteligencia Artificial
-- Contacto: [tu-email@ejemplo.com]
+**Daniel Armando Jiménez Mora**
+- Maestría en Inteligencia Artificial Aplicada
 
 ---
 
-**⚡ Hecho con Astro + React + LangChain + ❤️**
+**⚡ Hecho con Astro + React + LangChain **
