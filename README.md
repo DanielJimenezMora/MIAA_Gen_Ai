@@ -38,7 +38,7 @@ Abre [http://localhost:4321](http://localhost:4321) en tu navegador.
 
 ## Configuración de API Keys
 
-### Opción 1: Groq (⭐ RECOMENDADO - GRATUITO)
+### Opción 1: Groq (RECOMENDADO - GRATUITO)
 
 **Completamente gratis con modelos open source de alta calidad**
 
@@ -178,7 +178,7 @@ Proyecto académico para la Maestría en Inteligencia Artificial.
 Desarrollado como parte de la asignatura de IA Generativa.
 
 
-## 👨‍💻 Autor
+## Autor
 
 **Daniel Armando Jiménez Mora**
 - Maestría en Inteligencia Artificial Aplicada
