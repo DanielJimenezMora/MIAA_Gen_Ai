@@ -8,10 +8,7 @@ import node from '@astrojs/node';
 
 // https://astro.build/config
 export default defineConfig({
-  output: 'server',
-  adapter: node({
-    mode: 'standalone'
-  }),
+  // Removemos output y adapter para configuración estática por defecto
   integrations: [react()],
 
   vite: {

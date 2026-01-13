@@ -1,6 +1,9 @@
 import type { APIRoute } from 'astro';
 import { generateItinerary } from '../../lib/ai-service';
 
+// Configurar para Edge Runtime en Vercel
+export const runtime = 'edge';
+
 export const POST: APIRoute = async ({ request }) => {
   try {
     const body = await request.json();
